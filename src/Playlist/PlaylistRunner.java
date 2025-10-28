@@ -18,7 +18,6 @@ public class PlaylistRunner {
 		String mode = scanny.nextLine();
 		String play = "";
 		String[] playlist = new String[6];
-		
 		if(mode.equals("A")){
 			System.out.println("Your Playlists:");
 			while(scan.hasNextLine()) {
@@ -47,7 +46,28 @@ public class PlaylistRunner {
 				y++;
 			}
 		}
-			
+		else if(mode.equals("C")) {
+			System.out.println("What would you like to search by: ");
+			System.out.println("A: Year");
+			System.out.println("B: Artist");
+			String search = scanny.nextLine();
+			if(search.equals("A")) {
+				System.out.println("What year would you like to search by?");
+				String searchYear = scanny.nextLine();
+				System.out.println("Songs from " + searchYear + ":");
+				while(scan.hasNextLine()) {
+					String v = scan.nextLine();
+					String[] songInfo = v.split(",");
+					play = v;
+					System.out.print(v);
+					if(!(play.substring(0, 8).equals("Playlist"))) {
+						SongSearcher song = new SongSearcher(songInfo[0], songInfo[1], songInfo[2]);
+						if(searchYear.equals(song.getYear())) {
+							System.out.println(song.getYear());
+						}
+					}
+				}
+			}
+		}	
 	}
-
 }
