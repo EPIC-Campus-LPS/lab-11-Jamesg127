@@ -55,15 +55,42 @@ public class PlaylistRunner {
 				System.out.println("What year would you like to search by?");
 				String searchYear = scanny.nextLine();
 				System.out.println("Songs from " + searchYear + ":");
+				searchYear = " " + searchYear;
 				while(scan.hasNextLine()) {
 					String v = scan.nextLine();
 					String[] songInfo = v.split(",");
-					play = v;
-					System.out.print(v);
-					if(!(play.substring(0, 8).equals("Playlist"))) {
+					if(!(v.substring(0, 8).equals("Playlist"))) {
 						SongSearcher song = new SongSearcher(songInfo[0], songInfo[1], songInfo[2]);
+						
+						//System.out.println(searchYear);
+						//System.out.println(songInfo[2]);
+						
 						if(searchYear.equals(song.getYear())) {
-							System.out.println(song.getYear());
+							System.out.print(song.getSong() + ",");
+							System.out.print(song.getArtist() + ",");
+							System.out.print(song.getYear() + "; ");
+						}
+					}
+				}
+			}
+			else if(search.equals("B")){
+				System.out.println("What author would you like to search by?");
+				String searchArtist = scanny.nextLine();
+				System.out.println("Songs by " + searchArtist + ":");
+				searchArtist = " " + searchArtist;
+				while(scan.hasNextLine()) {
+					String v = scan.nextLine();
+					String[] songInfo = v.split(",");
+					if(!(v.substring(0, 8).equals("Playlist"))) {
+						SongSearcher song = new SongSearcher(songInfo[0], songInfo[1], songInfo[2]);
+						
+						//System.out.println(searchYear);
+						//System.out.println(songInfo[2]);
+						
+						if(searchArtist.equals(song.getArtist())) {
+							System.out.print(song.getSong() + ",");
+							System.out.print(song.getArtist() + ",");
+							System.out.print(song.getYear() + "; ");
 						}
 					}
 				}
