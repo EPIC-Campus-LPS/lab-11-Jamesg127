@@ -4,5 +4,5 @@
 /**
  * 
  */
-module lab_11 {
+module MusicLibrary {
 }
